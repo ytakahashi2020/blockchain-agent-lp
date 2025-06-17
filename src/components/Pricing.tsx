@@ -15,7 +15,12 @@ export default function Pricing() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const index = parseInt(entry.target.getAttribute('data-index') || '0');
-            setVisiblePlans(prev => [...new Set([...prev, index])]);
+            setVisiblePlans(prev => {
+              if (!prev.includes(index)) {
+                return [...prev, index];
+              }
+              return prev;
+            });
           }
         });
       },

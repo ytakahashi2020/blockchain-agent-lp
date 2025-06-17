@@ -1,6 +1,7 @@
 "use client";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import ParallaxSection from "./ParallaxSection";
 
 export default function Instructor() {
@@ -81,12 +82,14 @@ export default function Instructor() {
             <div className="relative group">
               {/* Main image container */}
               <div className="relative overflow-hidden rounded-3xl shadow-3xl group-hover:shadow-glow-lg transition-all duration-500">
-                <div className="aspect-w-4 aspect-h-5 bg-gradient-to-br from-blue-100 to-purple-100">
+                <div className="relative aspect-[4/5] bg-gradient-to-br from-blue-100 to-purple-100">
                   {/* Instructor image */}
-                  <img
+                  <Image
                     src="/images/teacher.jpg"
                     alt={t.instructor.name}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    priority
                   />
                   
                   {/* Overlay with social links */}
