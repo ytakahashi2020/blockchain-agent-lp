@@ -14,7 +14,12 @@ export default function Services() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const index = parseInt(entry.target.getAttribute('data-index') || '0');
-            setVisibleCards(prev => [...new Set([...prev, index])]);
+            setVisibleCards(prev => {
+              if (!prev.includes(index)) {
+                return [...prev, index];
+              }
+              return prev;
+            });
           }
         });
       },
